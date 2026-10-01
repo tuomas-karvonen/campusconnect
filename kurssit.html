@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Kurssit – Käyntikortit – CampusConnect</title>
+    <meta
+      name="description"
+      content="Kurssit, joille olet ilmoittautunut. Katso, ketkä muut opiskelevat samoilla kursseilla."
+    />
+    <link
+      rel="preload"
+      href="fonts/SourceSans3-VariableFont_wght.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/SourceSerif4-VariableFont_opsz,wght.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/main.js" defer></script>
+    <script src="js/onboarding.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Siirry pääsisältöön</a>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-logo" href="index.html">CampusConnect</a>
+        <nav class="site-nav" aria-label="Päävalikko">
+          <ul class="site-nav__list">
+            <li class="site-nav__item">
+              <a class="site-nav__link" href="index.html">
+                <img
+                  class="site-nav__icon"
+                  src="img/icons/home.svg"
+                  alt=""
+                  width="24"
+                  height="24"
+                />
+                <span class="site-nav__label">Koti</span>
+              </a>
+            </li>
+            <li class="site-nav__item">
+              <a class="site-nav__link" role="link" aria-disabled="true">
+                <img
+                  class="site-nav__icon"
+                  src="img/icons/calendar.svg"
+                  alt=""
+                  width="24"
+                  height="24"
+                />
+                <span class="site-nav__label">Tapahtumat</span>
+              </a>
+            </li>
+            <li class="site-nav__item">
+              <a class="site-nav__link" role="link" aria-disabled="true">
+                <img
+                  class="site-nav__icon"
+                  src="img/icons/rss.svg"
+                  alt=""
+                  width="24"
+                  height="24"
+                />
+                <span class="site-nav__label">Uutiset</span>
+              </a>
+            </li>
+            <li class="site-nav__item">
+              <a
+                class="site-nav__link"
+                href="palvelut.html"
+                aria-current="true"
+              >
+                <img
+                  class="site-nav__icon"
+                  src="img/icons/apps-active.svg"
+                  alt=""
+                  width="24"
+                  height="24"
+                />
+                <span class="site-nav__label">Palvelut</span>
+              </a>
+            </li>
+            <li class="site-nav__item site-nav__item--profile">
+              <a class="site-nav__link" role="link" aria-disabled="true">
+                <img
+                  class="site-nav__icon"
+                  src="img/icons/account.svg"
+                  alt=""
+                  width="24"
+                  height="24"
+                />
+                <span class="site-nav__label">Profiili</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="page">
+      <div class="container">
+        <div class="page-header">
+          <h1>Käyntikortit</h1>
+          <p class="lead">
+            Alapuolella näet kurssit, joille olet ilmoittautunut.<br />Näpäytä
+            kurssia nähdäksesi lisätietoja.
+          </p>
+        </div>
+
+        <div class="list-wrap">
+          <ul class="list">
+            <li class="list__item">
+              <a class="row" href="kurssi.html">
+                <span class="placeholder row__media" aria-hidden="true">
+                  <span class="placeholder__icon">
+                    <img src="img/placeholder/part-1.svg" alt="" />
+                    <img src="img/placeholder/part-2.svg" alt="" />
+                    <img src="img/placeholder/part-3.svg" alt="" />
+                  </span>
+                </span>
+                <div>
+                  <h2 class="row__title">Johdanto digitaalisiin palveluihin</h2>
+                  <p class="row__text">57 opiskelijaa</p>
+                </div>
+              </a>
+            </li>
+            <li class="list__item">
+              <a class="row" href="kurssi-tyhja.html">
+                <span class="placeholder row__media" aria-hidden="true">
+                  <span class="placeholder__icon">
+                    <img src="img/placeholder/part-1.svg" alt="" />
+                    <img src="img/placeholder/part-2.svg" alt="" />
+                    <img src="img/placeholder/part-3.svg" alt="" />
+                  </span>
+                </span>
+                <div>
+                  <h2 class="row__title">Johdanto ohjelmistokehitykseen</h2>
+                  <p class="row__text">61 opiskelijaa</p>
+                </div>
+              </a>
+            </li>
+            <li class="list__item">
+              <div class="row">
+                <span class="placeholder row__media" aria-hidden="true">
+                  <span class="placeholder__icon">
+                    <img src="img/placeholder/part-1.svg" alt="" />
+                    <img src="img/placeholder/part-2.svg" alt="" />
+                    <img src="img/placeholder/part-3.svg" alt="" />
+                  </span>
+                </span>
+                <div>
+                  <h2 class="row__title">Digistartti</h2>
+                  <p class="row__text">96 opiskelijaa</p>
+                </div>
+              </div>
+            </li>
+            <li class="list__item">
+              <div class="row">
+                <span class="placeholder row__media" aria-hidden="true">
+                  <span class="placeholder__icon">
+                    <img src="img/placeholder/part-1.svg" alt="" />
+                    <img src="img/placeholder/part-2.svg" alt="" />
+                    <img src="img/placeholder/part-3.svg" alt="" />
+                  </span>
+                </span>
+                <div>
+                  <h2 class="row__title">Johdanto opiskeluun</h2>
+                  <p class="row__text">24 opiskelijaa</p>
+                </div>
+              </div>
+            </li>
+            <li class="list__item">
+              <div class="row">
+                <span class="placeholder row__media" aria-hidden="true">
+                  <span class="placeholder__icon">
+                    <img src="img/placeholder/part-1.svg" alt="" />
+                    <img src="img/placeholder/part-2.svg" alt="" />
+                    <img src="img/placeholder/part-3.svg" alt="" />
+                  </span>
+                </span>
+                <div>
+                  <h2 class="row__title">Ammatillinen viestintä</h2>
+                  <p class="row__text">37 opiskelijaa</p>
+                </div>
+              </div>
+            </li>
+            <li class="list__item">
+              <div class="row">
+                <span class="placeholder row__media" aria-hidden="true">
+                  <span class="placeholder__icon">
+                    <img src="img/placeholder/part-1.svg" alt="" />
+                    <img src="img/placeholder/part-2.svg" alt="" />
+                    <img src="img/placeholder/part-3.svg" alt="" />
+                  </span>
+                </span>
+                <div>
+                  <h2 class="row__title">Tekoälyn perusteet</h2>
+                  <p class="row__text">48 opiskelijaa</p>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </main>
+
+    <div class="toast" role="status"></div>
+
+    <!-- Onboarding: opens automatically once per browser session. -->
+    <dialog
+      class="modal onboarding"
+      id="onboarding"
+      aria-labelledby="onboarding-title"
+    >
+      <div class="modal__header">
+        <button
+          class="icon-button modal__back"
+          type="button"
+          aria-label="Edellinen vaihe"
+          hidden
+        >
+          <img src="img/icons/chevron-back.svg" alt="" width="24" height="24" />
+        </button>
+        <p class="modal__title" id="onboarding-title">
+          <span class="onboarding__title">Käyntikortit</span
+          ><span class="visually-hidden onboarding__progress"></span>
+        </p>
+        <button
+          class="icon-button modal__close"
+          type="button"
+          aria-label="Sulje"
+          data-modal-close
+        >
+          <img src="img/icons/close.svg" alt="" width="24" height="24" />
+        </button>
+      </div>
+
+      <form class="modal__body" id="onboarding-form" novalidate>
+        <!-- Intro: Onboarding 1 in Figma -->
+        <section
+          class="onboarding__step"
+          data-title="Käyntikortit"
+          aria-labelledby="intro-title"
+        >
+          <h2 class="modal__heading" id="intro-title" tabindex="-1">
+            Näe, keitä muita kursseillasi on
+          </h2>
+          <div class="modal__text">
+            <p>
+              Käyntikortit näyttävät, ketkä muut opiskelevat samoja kursseja
+              kuin sinä, ja keneltä voit kysyä, jos jokin kurssilla askarruttaa.
+            </p>
+            <p>
+              Alapuolella voit täyttää omat tietosi palveluun. Tämä on täysin
+              vapaaehtoista eikä sinun tarvitse täyttää tietojasi käyttääksesi
+              palvelua. Voit halutessasi täyttää tiedot myös myöhemmin.
+            </p>
+          </div>
+          <div class="modal__actions onboarding__intro-actions">
+            <button
+              class="button button--primary button--block"
+              type="button"
+              data-next
+            >
+              Täytä tietosi
+            </button>
+            <button
+              class="button button--secondary button--block"
+              type="button"
+              data-modal-close
+            >
+              Jatka suoraan palveluun
+            </button>
+          </div>
+        </section>
+
+        <!-- Question 1: Onboarding 2 in Figma -->
+        <section
+          class="onboarding__step"
+          data-title="Oma käyntikorttisi"
+          data-question="1"
+          aria-labelledby="step1-title"
+          hidden
+        >
+          <h2 class="modal__heading" id="step1-title" tabindex="-1">
+            Haluatko olla avoin kysymyksille muilta opiskelijoilta?
+          </h2>
+          <p class="modal__text" id="step1-text">
+            Jos vastaat kyllä, muut kurssilaiset voivat lähettää sinulle
+            viestejä. Täyttämäsi tiedot näkyvät vain samoilla kursseilla
+            oleville.
+          </p>
+          <fieldset
+            class="choices"
+            aria-labelledby="step1-title"
+            aria-describedby="step1-text"
+          >
+            <label class="choice"
+              ><input type="radio" name="avoin" value="kylla" /> Kyllä</label
+            >
+            <label class="choice"
+              ><input type="radio" name="avoin" value="ei" /> En</label
+            >
+          </fieldset>
+          <div class="modal__actions">
+            <button
+              class="button button--primary button--block"
+              type="button"
+              data-next
+              disabled
+            >
+              Jatka
+            </button>
+            <div class="steps" aria-hidden="true">
+              <span class="steps__dot is-current"></span>
+              <span class="steps__dot"></span>
+              <span class="steps__dot"></span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Question 2: Onboarding 3 in Figma -->
+        <section
+          class="onboarding__step"
+          data-title="Oma käyntikorttisi"
+          data-question="2"
+          aria-labelledby="step2-title"
+          hidden
+        >
+          <h2 class="modal__heading" id="step2-title" tabindex="-1">
+            Milloin yleensä opiskelet?
+          </h2>
+          <div class="modal__text" id="step2-text">
+            <p>
+              Muut kurssilaiset näkevät valitsemasi opiskeluajat omien tietojesi
+              yhteydessä.
+            </p>
+            <p>Voit valita useamman vaihtoehdon.</p>
+          </div>
+          <fieldset
+            class="choices"
+            aria-labelledby="step2-title"
+            aria-describedby="step2-text"
+          >
+            <label class="choice"
+              ><input type="checkbox" name="aika" value="aamuisin" />
+              Aamuisin</label
+            >
+            <label class="choice"
+              ><input type="checkbox" name="aika" value="paivisin" />
+              Päivisin</label
+            >
+            <label class="choice"
+              ><input type="checkbox" name="aika" value="iltaisin" />
+              Iltaisin</label
+            >
+            <label class="choice"
+              ><input type="checkbox" name="aika" value="viikonloppuisin" />
+              Viikonloppuisin</label
+            >
+          </fieldset>
+          <div class="modal__actions">
+            <button
+              class="button button--primary button--block"
+              type="button"
+              data-next
+              disabled
+            >
+              Jatka
+            </button>
+            <div class="steps" aria-hidden="true">
+              <span class="steps__dot"></span>
+              <span class="steps__dot is-current"></span>
+              <span class="steps__dot"></span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Question 3: Onboarding 4 in Figma -->
+        <section
+          class="onboarding__step"
+          data-title="Oma käyntikorttisi"
+          data-question="3"
+          aria-labelledby="step3-title"
+          hidden
+        >
+          <h2 class="modal__heading" id="step3-title" tabindex="-1">
+            Miten kuvailisit itseäsi muille?
+          </h2>
+          <p class="modal__text" id="step3-text">
+            Alla voit kirjoittaa itsestäsi lyhyen kuvaustekstin, joka näytetään
+            omien tietojesi yhteydessä.
+          </p>
+          <textarea
+            class="textarea"
+            name="kuvaus"
+            aria-labelledby="step3-title"
+            aria-describedby="step3-text"
+          ></textarea>
+          <div class="modal__actions">
+            <button class="button button--primary button--block" type="submit">
+              Tallenna tiedot
+            </button>
+            <div class="steps" aria-hidden="true">
+              <span class="steps__dot"></span>
+              <span class="steps__dot"></span>
+              <span class="steps__dot is-current"></span>
+            </div>
+          </div>
+        </section>
+      </form>
+    </dialog>
+  </body>
+</html>

@@ -1,0 +1,1264 @@
+/* ==========================================================================
+   CampusConnect – shared stylesheet
+   Values come from the Figma file "CampusConnect Käyntikortit"
+   (uHTaIp5e9gUA955tGombiA). The file defines no variables or styles,
+   so the token names below are ours; the values are Figma's.
+   ========================================================================== */
+
+/* Fonts: Source Serif 4 (headings) and Source Sans 3 (body, UI),
+   self-hosted variable fonts. One file per family covers every weight
+   (and Serif's optical size axis). The italic files in fonts/ are not
+   used by the design, so they are not declared. */
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("../fonts/SourceSans3-VariableFont_wght.ttf") format("truetype");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Serif 4";
+  src: url("../fonts/SourceSerif4-VariableFont_opsz,wght.ttf")
+    format("truetype");
+  font-weight: 200 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==========================================================================
+   1. Design tokens
+   ========================================================================== */
+
+:root {
+  /* The design is light only; dark mode keeps these colors. */
+  color-scheme: light;
+
+  /* --- Colors ----------------------------------------------------------- */
+  --color-bg: #faf0f0; /* page background */
+  --color-surface: #ffffff; /* cards, modals, tab bar */
+  --color-accent: #cc2970; /* primary buttons, links, active tab */
+  --color-on-accent: #ffffff; /* text on accent */
+  --color-text: #000000; /* headings, primary text */
+  --color-text-soft: rgba(0, 0, 0, 0.7); /* card body text */
+  --color-text-muted: rgba(0, 0, 0, 0.6); /* secondary text, inactive tabs */
+  --color-divider: rgba(0, 0, 0, 0.2); /* hairlines, tab bar border */
+  --color-border-input: rgba(0, 0, 0, 0.3);
+  --color-placeholder: rgba(0, 0, 0, 0.2); /* image placeholders, avatars */
+  --color-overlay: rgba(0, 0, 0, 0.2); /* modal backdrop */
+
+  /* Not in Figma: greyed-out nav items (Tapahtumat, Uutiset, Profiili). */
+  --color-disabled: rgba(0, 0, 0, 0.3);
+
+  /* --- Font families ---------------------------------------------------- */
+  --font-serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-sans: "Source Sans 3", "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* --- Font weights ----------------------------------------------------- */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 650;
+
+  /* --- Type scale (size / line height), px values from Figma ------------ */
+  /* Serif */
+  --text-display-size: 2rem; /* 32px – page title (h1) */
+  --text-display-lh: 2.25rem; /* 36px */
+  --text-display-opsz: 40; /* Figma sets optical size 40 on page titles */
+  --text-title-size: 1.5rem; /* 24px – section title (h2) */
+  --text-title-lh: 2.25rem; /* 36px */
+  --text-heading-size: 1.25rem; /* 20px – modal question */
+  --text-heading-lh: 1.75rem; /* 28px */
+  --text-subheading-size: 1.125rem; /* 18px – list row and event titles */
+  --text-subheading-lh: 1.40625rem; /* 22.5px */
+  --text-name-size: 1rem; /* 16px medium – person name */
+  --text-name-lh: 1.3125rem; /* 21px */
+
+  /* Sans */
+  --text-body-size: 1rem; /* 16px – body text, buttons, modal text */
+  --text-body-lh: 1.5rem; /* 24px */
+  --text-body-sm-size: 0.875rem; /* 14px – smallest text: descriptions, lead, notes */
+  --text-body-sm-lh: 1.3125rem; /* 21px */
+  --text-lead-size: 1.125rem; /* 18px – text under the page title */
+  --text-lead-lh: 1.6875rem; /* 27px */
+  --text-news-title-size: 1rem; /* 16px semibold – news item title */
+  --text-news-title-lh: 1.3125rem; /* 21px */
+  --text-label-size: 0.875rem; /* 14px medium – tab bar labels (13px in Figma) */
+  --text-label-lh: 1.125rem; /* 18px */
+
+  /* --- Spacing (from Figma positions) ---------------------------------- */
+  --space-1: 0.25rem; /* 4px */
+  --space-2: 0.5rem; /* 8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px – page side padding, card padding, list gaps */
+  --space-5: 1.5rem; /* 24px – modal padding */
+  --space-6: 2rem; /* 32px */
+  --space-7: 3rem; /* 48px */
+  --space-8: 4rem; /* 64px – gap before a new page section */
+  --space-9: 5rem; /* 80px – page top on mobile, header to first section */
+  --space-card: 1.25rem; /* 20px – news card padding */
+
+  /* --- Radii ------------------------------------------------------------ */
+  --radius-md: 8px; /* cards, buttons, thumbnails, modals, text box */
+  --radius-pill: 20px; /* chat field, send button */
+  --radius-full: 50%; /* avatars */
+
+  /* --- Effects ---------------------------------------------------------- */
+  --shadow-card: 0 4px 8px 0 rgba(64, 0, 28, 0.2);
+  --shadow-input-inset: inset 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  --blur-overlay: 2px;
+
+  /* --- Component sizes -------------------------------------------------- */
+  --size-button: 3rem; /* 48px – button and modal header height */
+  --size-thumb: 5rem; /* 80px – list thumbnail */
+  --size-avatar: 3rem; /* 48px – person avatar */
+  --size-icon: 1.5rem; /* 24px – UI icons */
+  --size-icon-sm: 1.25rem; /* 20px – back link chevron */
+  --size-tab: 4rem; /* 64px – tab bar: 10px + icon + label + 10px (plus home indicator area on iPhones) */
+  --size-chat-field: 2rem; /* 32px – chat input and send button */
+  --size-dot: 10px; /* onboarding step indicator */
+
+  /* --- Layout (from campusconnect-responsiveness.md) -------------------- */
+  --container-max: 768px;
+  --measure: 70ch; /* max width of text blocks */
+  --modal-max: 480px; /* dialog width on screens >= 600px */
+  /* Breakpoints (media queries cannot use custom properties):
+     600px  – centered modal dialog
+     672px  – two-column lists and card grids (column reaches 640px)
+     768px  – top navigation replaces bottom tab bar */
+}
+
+/* ==========================================================================
+   2. Base
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-lh);
+  /* Inherited by all links and hover underlines: a little air below text. */
+  text-underline-offset: 0.15em;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-serif);
+  font-weight: var(--weight-regular);
+  color: var(--color-text);
+  /* Long Finnish compounds (e.g. "ohjelmistokehitykseen") must not push
+     the page wider than a 320px screen. */
+  overflow-wrap: break-word;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
+
+h1 {
+  font-size: var(--text-display-size);
+  line-height: var(--text-display-lh);
+  font-variation-settings: "opsz" var(--text-display-opsz);
+}
+
+h2 {
+  font-size: var(--text-title-size);
+  line-height: var(--text-title-lh);
+}
+
+h3 {
+  font-size: var(--text-subheading-size);
+  line-height: var(--text-subheading-lh);
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration-thickness: from-font;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Lead text under a page title (14px muted, Figma "Tervetuloa…"). */
+/* Text right under the page title: lead line or course code. */
+.lead,
+.course__code {
+  margin-top: var(--space-4);
+  max-width: var(--measure);
+  color: var(--color-text-muted);
+  font-size: var(--text-lead-size);
+  line-height: var(--text-lead-lh);
+}
+
+/* Hidden visually, still read by screen readers. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: var(--space-2);
+  left: var(--space-2);
+  z-index: 100;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* ==========================================================================
+   3. Layout
+   ========================================================================== */
+
+/* Page content: one centered column, max --container-max wide. */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+
+/* Mobile: Figma places the page title 80px below the status bar.
+   Leave room at the bottom for the fixed tab bar. */
+.page {
+  padding-top: var(--space-9);
+  padding-bottom: calc(
+    var(--size-tab) + env(safe-area-inset-bottom, 0px) + var(--space-7)
+  );
+}
+
+/* Long text stays one column, capped at a readable width. */
+.prose {
+  max-width: var(--measure);
+}
+
+/* Desktop: the same 80px gap as on mobile, measured from the top bar. */
+@media (min-width: 768px) {
+  .page {
+    padding-bottom: var(--space-8);
+  }
+}
+
+/* Phone in landscape: less empty space above the title. */
+@media (max-height: 500px) {
+  .page {
+    padding-top: var(--space-6);
+  }
+}
+
+/* ==========================================================================
+   4. Navigation
+   One <nav> in the header. Below 768px it is the bottom tab bar from
+   Figma; from 768px up it is a top bar with text links and a profile
+   icon. Items without a page (Tapahtumat, Uutiset, Profiili) are
+   greyed out: <a> without href, role="link", aria-disabled="true".
+   ========================================================================== */
+
+/* The wordmark only appears in the top bar; Figma has no mobile header. */
+.site-logo {
+  display: none;
+}
+
+/* --- Bottom tab bar (mobile) ------------------------------------------ */
+.site-nav {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  border-top: 1px solid var(--color-divider);
+  background-color: var(--color-surface);
+}
+
+.site-nav__list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  max-width: var(--modal-max);
+  margin-inline: auto;
+  padding: 0 var(--space-4);
+  list-style: none;
+}
+
+.site-nav__link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-height: var(--size-tab);
+  padding: 10px 0; /* same space above the icon and below the label */
+  color: var(--color-text-muted);
+  font-size: var(--text-label-size);
+  font-weight: var(--weight-medium);
+  line-height: var(--text-label-lh);
+  text-align: center;
+  text-decoration: none;
+}
+
+.site-nav__icon {
+  width: var(--size-icon);
+  height: var(--size-icon);
+}
+
+.site-nav__link[aria-current] {
+  color: var(--color-accent);
+}
+
+.site-nav__link[aria-disabled="true"] {
+  color: var(--color-disabled);
+  cursor: default;
+}
+
+/* Icons are black at 60%; half opacity gives the 30% disabled grey. */
+.site-nav__link[aria-disabled="true"] .site-nav__icon {
+  opacity: 0.5;
+}
+
+/* --- Top navigation bar (tablet and desktop) -------------------------- */
+@media (min-width: 768px) {
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid var(--color-divider);
+    background-color: var(--color-bg);
+  }
+
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+    max-width: var(--container-max);
+    min-height: 4rem;
+    margin-inline: auto;
+    padding-inline: var(--space-4);
+  }
+
+  .site-logo {
+    display: block;
+    color: var(--color-text);
+    font-family: var(--font-serif);
+    font-size: var(--text-heading-size);
+    line-height: var(--text-heading-lh);
+    text-decoration: none;
+  }
+
+  .site-nav {
+    position: static;
+    padding-bottom: 0;
+    border-top: 0;
+    background-color: transparent;
+  }
+
+  .site-nav__list {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    max-width: none;
+    padding: 0;
+  }
+
+  .site-nav__link {
+    flex-direction: row;
+    min-height: var(--size-button);
+    padding: 0;
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-lh);
+  }
+
+  /* Text links only; the profile item shows just its icon. */
+  .site-nav__icon {
+    display: none;
+  }
+
+  .site-nav__item--profile .site-nav__icon {
+    display: block;
+  }
+
+  .site-nav__item--profile .site-nav__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+/* ==========================================================================
+   5. Components
+   ========================================================================== */
+
+/* --- Buttons ------------------------------------------------------------ */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: var(--size-button);
+  padding: 0 var(--space-5);
+  border: 1px solid var(--color-accent);
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: var(--text-body-size);
+  font-weight: var(--weight-medium);
+  line-height: var(--text-body-lh);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button--primary {
+  background-color: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+.button--secondary {
+  background-color: transparent;
+  color: var(--color-accent);
+}
+
+.button--primary:hover {
+  filter: brightness(0.92);
+}
+
+.button--secondary:hover {
+  background-color: var(--color-surface);
+}
+
+/* Full width of its column (modal actions). */
+.button--block {
+  width: 100%;
+}
+
+/* Not in Figma: "Jatka" before a choice is made. */
+.button:disabled {
+  opacity: 0.4;
+  filter: none;
+  cursor: not-allowed;
+}
+
+/* Icon-only button (modal close / back): 48px tap area, 24px icon. */
+.icon-button {
+  display: grid;
+  place-items: center;
+  width: var(--size-button);
+  height: var(--size-button);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-md);
+  background: none;
+  cursor: pointer;
+}
+
+.icon-button img {
+  width: var(--size-icon);
+  height: var(--size-icon);
+}
+
+.icon-button:focus-visible {
+  outline-offset: -4px;
+}
+
+/* --- Back link ("‹ Käyntikortit" on course pages) ----------------------- */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  min-height: var(--size-icon);
+  color: var(--color-text-muted);
+  font-size: var(--text-body-sm-size);
+  font-weight: var(--weight-medium);
+  line-height: var(--text-body-sm-lh);
+  text-decoration: none;
+}
+
+.back-link:hover {
+  text-decoration: underline;
+}
+
+.back-link img {
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+}
+
+/* --- Image placeholder (grey box with image icon) ----------------------- */
+.placeholder {
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius-md);
+  background-color: var(--color-placeholder);
+}
+
+/* The Figma icon is three parts in a 40 × 27px box. */
+.placeholder__icon {
+  position: relative;
+  width: 40px;
+  height: 27px;
+}
+
+.placeholder__icon img {
+  position: absolute;
+}
+
+.placeholder__icon img:nth-child(1) {
+  left: 0;
+  top: 13.2px;
+}
+
+.placeholder__icon img:nth-child(2) {
+  left: 11.7px;
+  top: 7.4px;
+}
+
+.placeholder__icon img:nth-child(3) {
+  left: 9.9px;
+  top: 0;
+}
+
+/* Larger images (event cards) use the same icon at 1.5×, as in Figma. */
+.placeholder--large .placeholder__icon {
+  transform: scale(1.5);
+}
+
+/* --- List rows (Palvelut, Käyntikortit course list) ----------------------
+   Lists and card grids switch to two columns when their column is at least
+   640px wide. They always fill the page container (viewport − 32px padding,
+   up to --container-max), so that happens at a 672px viewport. A media query is used
+   instead of a container query because the W3C CSS validator does not yet
+   recognize container queries. */
+.list {
+  padding: 0;
+  list-style: none;
+}
+
+.list__item + .list__item {
+  border-top: 1px solid var(--color-divider);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding-block: var(--space-4);
+  color: inherit;
+  text-decoration: none;
+}
+
+.row__media {
+  flex: none;
+  width: var(--size-thumb);
+  height: var(--size-thumb);
+  border-radius: var(--radius-md);
+  object-fit: cover;
+}
+
+.row__title {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: var(--text-subheading-size);
+  font-weight: var(--weight-regular);
+  line-height: var(--text-subheading-lh);
+}
+
+.row__text {
+  display: block;
+  margin-top: var(--space-1);
+  color: var(--color-text-muted);
+  font-size: var(--text-body-sm-size);
+  line-height: var(--text-body-sm-lh);
+}
+
+a.row:hover .row__title {
+  text-decoration: underline;
+}
+
+/* Two columns once the list's column is 640px wide (see above). */
+@media (min-width: 672px) {
+  .list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: var(--space-6);
+  }
+
+  .list__item:nth-child(2) {
+    border-top: 0;
+  }
+}
+
+/* --- Cards and card grid (person cards, event cards) --------------------- */
+.card {
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+}
+
+.card-grid {
+  display: grid;
+  gap: var(--space-4);
+  padding: 0;
+  list-style: none;
+}
+
+@media (min-width: 672px) {
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: 1fr; /* every row as tall as the tallest card */
+  }
+}
+
+/* --- Person card (Kurssi) ----------------------------------------------- */
+.person-card {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: var(--space-4);
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
+
+button.person-card {
+  cursor: pointer;
+}
+
+button.person-card:hover .person-card__name {
+  text-decoration: underline;
+}
+
+.person-card__head {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.avatar {
+  display: block;
+  flex: none;
+  width: var(--size-avatar);
+  height: var(--size-avatar);
+  border-radius: var(--radius-full);
+  background-color: var(--color-placeholder);
+}
+
+.person-card__name {
+  display: block;
+  font-family: var(--font-serif);
+  font-size: var(--text-name-size);
+  font-weight: var(--weight-medium);
+  line-height: var(--text-name-lh);
+}
+
+.person-card__status {
+  display: block;
+  color: var(--color-text-muted);
+  font-size: var(--text-body-sm-size);
+  line-height: var(--text-body-sm-lh);
+}
+
+.person-card__note {
+  display: block;
+  margin-top: var(--space-4);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-divider);
+  color: var(--color-text-muted);
+  font-size: var(--text-body-sm-size);
+  line-height: var(--text-body-sm-lh);
+}
+
+/* --- Radio buttons and checkboxes ---------------------------------------
+   Native inputs drawn to match Figma's Material outline icons
+   (radio: 20px ring, checkbox: 18px square, 2px black stroke).
+   Checked states are not in Figma; they use the accent color. */
+.choices {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.choice {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  min-height: 2.5rem; /* rows sit 40px apart in Figma */
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-lh);
+  cursor: pointer;
+}
+
+.choice input {
+  flex: none;
+  margin: 2px;
+  -webkit-appearance: none;
+  appearance: none;
+  border: 2px solid var(--color-text);
+  background-color: var(--color-surface);
+  background-position: center;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.choice input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  border-radius: var(--radius-full);
+}
+
+.choice input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin: 3px;
+  border-radius: 2px;
+}
+
+.choice input[type="radio"]:checked {
+  border-color: var(--color-accent);
+  background-image: radial-gradient(
+    circle,
+    var(--color-accent) 0 5px,
+    transparent 5.5px
+  );
+}
+
+.choice input[type="checkbox"]:checked {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent);
+  background-image: url("../img/icons/check.svg");
+  background-size: 100%;
+}
+
+/* --- Text area (Onboarding 4) ------------------------------------------- */
+.textarea {
+  display: block;
+  width: 100%;
+  min-height: 9.375rem; /* 150px */
+  padding: var(--space-3);
+  border: 1px solid var(--color-border-input);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-input-inset);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-lh);
+  resize: vertical;
+}
+
+/* --- Step dots (onboarding progress) ------------------------------------ */
+.steps {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: 0;
+  list-style: none;
+}
+
+.steps__dot {
+  width: var(--size-dot);
+  height: var(--size-dot);
+  border: 1.5px solid rgba(0, 0, 0, 0.33);
+  border-radius: var(--radius-full);
+}
+
+.steps__dot.is-current {
+  border: 1px solid var(--color-text-muted);
+  background-color: var(--color-text-muted);
+}
+
+/* --- Modal (<dialog>) ----------------------------------------------------
+   Phone: 16px from the screen edges, as in Figma. From 600px up the
+   width stops at 480px (responsiveness plan). Always centered. */
+.modal {
+  width: calc(100% - 2 * var(--space-4));
+  max-width: var(--modal-max);
+  max-height: calc(100% - 2 * var(--space-4));
+  overflow-y: auto; /* phone in landscape: the modal scrolls */
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  box-shadow: var(--shadow-card);
+  color: var(--color-text);
+}
+
+.modal::backdrop {
+  background-color: var(--color-overlay);
+  -webkit-backdrop-filter: blur(var(--blur-overlay));
+  backdrop-filter: blur(var(--blur-overlay));
+}
+
+/* Back arrow | title | close X */
+.modal__header {
+  display: grid;
+  grid-template-columns: var(--size-button) 1fr var(--size-button);
+  align-items: center;
+  min-height: var(--size-button);
+  border-bottom: 1px solid var(--color-divider);
+}
+
+.modal__back {
+  grid-column: 1;
+}
+
+.modal__back[hidden] {
+  display: none;
+}
+
+.modal__title {
+  grid-column: 2;
+  color: var(--color-text-muted);
+  font-family: var(--font-sans);
+  font-size: var(--text-body-size);
+  font-weight: var(--weight-regular);
+  line-height: var(--text-body-lh);
+  text-align: center;
+}
+
+.modal__close {
+  grid-column: 3;
+}
+
+.modal__body {
+  padding: var(--space-5);
+}
+
+/* Question heading inside a modal step (serif 20/28). */
+.modal__heading {
+  font-size: var(--text-heading-size);
+  line-height: var(--text-heading-lh);
+}
+
+.modal__text {
+  margin-top: var(--space-4);
+  color: var(--color-text-muted);
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-lh);
+}
+
+.modal__actions {
+  margin-top: var(--space-5);
+}
+
+.modal__actions .steps {
+  margin-top: var(--space-6);
+  margin-bottom: var(--space-2);
+}
+
+/* --- Toast (not in Figma; replaces the removed confirmation modal) ------ */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(
+    var(--size-tab) + env(safe-area-inset-bottom, 0px) + var(--space-4)
+  );
+  z-index: 20;
+  width: calc(100% - 2 * var(--space-4));
+  max-width: var(--modal-max);
+  /* Left padding = 4px stripe + 16px. */
+  padding: var(--space-3) var(--space-4) var(--space-3)
+    calc(4px + var(--space-4));
+  border-radius: var(--radius-md);
+  /* Straight 4px accent stripe on the left, clipped by the rounded corners
+     (a border-left would curve along them). */
+  background: linear-gradient(
+    to right,
+    var(--color-accent) 4px,
+    var(--color-surface) 4px
+  );
+  box-shadow: var(--shadow-card);
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-lh);
+  transform: translateX(-50%);
+  /* Always in the page (so screen readers catch the live update);
+     invisible until it has a message. */
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toast.is-visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .toast {
+    transition: opacity 200ms ease-out;
+  }
+}
+
+@media (min-width: 768px) {
+  .toast {
+    bottom: var(--space-6);
+  }
+}
+
+/* Looks like a link but has no destination yet (e.g. "Lue lisää →"). */
+.text-link {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-thickness: from-font;
+}
+
+/* Service descriptions are cut to two lines, as in Figma. */
+.row__text--clamp {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+/* ==========================================================================
+   6. Page sections
+   ========================================================================== */
+
+/* A section starts with a divider line and a serif h2 (Etusivu, Kurssi). */
+.section {
+  margin-top: var(--space-8);
+  padding-top: var(--space-2);
+  border-top: 1px solid var(--color-divider);
+}
+
+.section__title {
+  margin-bottom: var(--space-5);
+}
+
+/* 80px from the page header to the first section, 64px between the rest. */
+.page-header + .section {
+  margin-top: var(--space-9);
+}
+
+/* Lists directly under the header (Palvelut, Käyntikortit):
+   64px + the row's own 16px padding = 80px, as in Figma. */
+.page-header + .list-wrap {
+  margin-top: var(--space-8);
+}
+
+/* ==========================================================================
+   7. Etusivu
+   ========================================================================== */
+
+/* "Usein käytetyt palvelut" – 80px tiles, 16px apart. On a phone the row
+   is wider than the screen (the 4th tile is cut off in Figma), so it
+   scrolls sideways and runs to the screen edge. */
+.tiles-scroll {
+  margin-right: calc(-1 * var(--space-4));
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.tiles-scroll:focus-visible {
+  outline-offset: -2px;
+}
+
+.tiles {
+  display: flex;
+  gap: var(--space-4);
+  width: max-content;
+  padding: 0 var(--space-4) 0 0;
+  list-style: none;
+}
+
+.tiles .placeholder {
+  width: var(--size-thumb);
+  height: var(--size-thumb);
+}
+
+/* --- News card (Uutiset) ------------------------------------------------ */
+.news {
+  padding: var(--space-card);
+  list-style: none;
+}
+
+.news__item + .news__item {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-divider);
+}
+
+.news__title {
+  font-family: var(--font-sans);
+  font-size: var(--text-news-title-size);
+  font-weight: var(--weight-semibold);
+  line-height: var(--text-news-title-lh);
+}
+
+.news__text,
+.news__more {
+  margin-top: var(--space-2);
+  font-size: var(--text-body-sm-size);
+  line-height: var(--text-body-sm-lh);
+}
+
+.news__text {
+  color: var(--color-text-soft);
+}
+
+/* --- Event card (Tapahtumat) -------------------------------------------- */
+/* Cards fill their grid cell, so cards in the same row are equally tall. */
+.event {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.event__media {
+  flex: none;
+  height: 10.75rem; /* 172px */
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+/* The text area takes the leftover space; "Lue lisää →" sits at the bottom. */
+.event__body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: var(--space-card) var(--space-5) var(--space-5);
+}
+
+.event__text,
+.event__meta,
+.event__more {
+  margin-top: var(--space-3);
+  color: var(--color-text-soft);
+  font-size: var(--text-body-sm-size);
+  line-height: var(--text-body-sm-lh);
+}
+
+.event__meta {
+  padding: 0;
+  list-style: none;
+}
+
+.event__meta li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-2);
+}
+
+.event__meta li + li {
+  margin-top: var(--space-3);
+}
+
+/* 14px icon box, centered on the first text line. */
+.event__icon {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 14px;
+  height: var(--text-body-sm-lh);
+}
+
+.event__more {
+  margin-top: auto;
+  padding-top: var(--space-3);
+  color: var(--color-accent);
+}
+
+/* ==========================================================================
+   8. Käyntikortit onboarding modal (Onboarding 1–4)
+   ========================================================================== */
+
+.onboarding__step[hidden] {
+  display: none;
+}
+
+/* Intro step: "Täytä tietosi" and "Jatka suoraan palveluun", 16px apart. */
+.onboarding__intro-actions {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.onboarding__step .modal__heading:focus {
+  outline: none;
+}
+
+.onboarding__step .modal__text p + p {
+  margin-top: var(--space-4);
+}
+
+/* Choice rows have 8px of their own padding above and below. */
+.onboarding__step .choices {
+  margin-top: var(--space-2);
+}
+
+.onboarding__step .textarea {
+  margin-top: var(--space-5);
+}
+
+.onboarding__step .textarea + .modal__actions {
+  margin-top: var(--space-6);
+}
+
+/* ==========================================================================
+   9. Kurssi pages (Kurssi, Kurssi (tyhjä))
+   ========================================================================== */
+
+.page-header .back-link + h1 {
+  margin-top: var(--space-4);
+}
+
+.course__body {
+  max-width: var(--measure);
+  margin-top: var(--space-7);
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-lh);
+}
+
+.course__body > * + * {
+  margin-top: var(--space-4);
+}
+
+/* Section title followed by a short text instead of cards: 16px gap. */
+.section__title--tight {
+  margin-bottom: var(--space-4);
+}
+
+.empty-state {
+  max-width: var(--measure);
+  color: var(--color-text-muted);
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-lh);
+}
+
+/* ==========================================================================
+   10. Käyntikortti and Chat modals
+   ========================================================================== */
+
+/* --- Käyntikortti: 16px padding, blocks separated by dividers ----------- */
+.profile {
+  padding: var(--space-4);
+}
+
+.profile__block {
+  padding-block: var(--space-4);
+  border-top: 1px solid var(--color-divider);
+}
+
+.profile__block:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.profile__name {
+  font-family: var(--font-serif);
+  font-size: var(--text-name-size);
+  font-weight: var(--weight-medium);
+  line-height: var(--text-name-lh);
+}
+
+.profile__text {
+  font-size: var(--text-body-sm-size);
+  line-height: var(--text-body-sm-lh);
+}
+
+.profile__courses {
+  color: var(--color-text-muted);
+  font-size: var(--text-body-sm-size);
+  line-height: var(--text-body-sm-lh);
+}
+
+.profile__courses ul {
+  margin-top: var(--space-1);
+  padding-left: 18px;
+}
+
+/* --- Chat: fixed-height modal with an empty message area and composer --- */
+.modal--chat[open] {
+  display: flex;
+  flex-direction: column;
+  height: 36.75rem; /* 588px in Figma; .modal's max-height fits short screens */
+}
+
+.chat__messages {
+  flex: 1;
+}
+
+.chat__composer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border-top: 1px solid var(--color-divider);
+}
+
+/* Static example: the controls are disabled but keep Figma's look. */
+.chat__input {
+  flex: 1;
+  min-width: 0;
+  height: var(--size-chat-field);
+  padding: 0 var(--space-4);
+  border: 1px solid var(--color-divider);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-family: inherit;
+  font-size: var(--text-body-size);
+  line-height: var(--text-body-lh);
+}
+
+.chat__input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
+.chat__send {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: var(--size-chat-field);
+  height: var(--size-chat-field);
+  padding: 0;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background-color: var(--color-accent);
+}
+
+.chat__send img {
+  width: var(--size-icon-sm);
+  height: var(--size-icon-sm);
+}

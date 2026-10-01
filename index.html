@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="fi">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <title>Koti – CampusConnect</title>
+    <meta
+      name="description"
+      content="CampusConnect kokoaa Haaga-Helian opiskelijoiden palvelut, uutiset ja tapahtumat yhteen paikkaan."
+    />
+    <link
+      rel="preload"
+      href="fonts/SourceSans3-VariableFont_wght.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="fonts/SourceSerif4-VariableFont_opsz,wght.ttf"
+      as="font"
+      type="font/ttf"
+      crossorigin
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/main.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Siirry pääsisältöön</a>
+
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="site-logo" href="index.html">CampusConnect</a>
+        <nav class="site-nav" aria-label="Päävalikko">
+          <ul class="site-nav__list">
+            <li class="site-nav__item">
+              <a class="site-nav__link" href="index.html" aria-current="page">
+                <img
+                  class="site-nav__icon"
+                  src="img/icons/home-active.svg"
+                  alt=""
+                  width="24"
+                  height="24"
+                />
+                <span class="site-nav__label">Koti</span>
+              </a>
+            </li>
+            <li class="site-nav__item">
+              <a class="site-nav__link" role="link" aria-disabled="true">
+                <img
+                  class="site-nav__icon"
+                  src="img/icons/calendar.svg"
+                  alt=""
+                  width="24"
+                  height="24"
+                />
+                <span class="site-nav__label">Tapahtumat</span>
+              </a>
+            </li>
+            <li class="site-nav__item">
+              <a class="site-nav__link" role="link" aria-disabled="true">
+                <img
+                  class="site-nav__icon"
+                  src="img/icons/rss.svg"
+                  alt=""
+                  width="24"
+                  height="24"
+                />
+                <span class="site-nav__label">Uutiset</span>
+              </a>
+            </li>
+            <li class="site-nav__item">
+              <a class="site-nav__link" href="palvelut.html">
+                <img
+                  class="site-nav__icon"
+                  src="img/icons/apps.svg"
+                  alt=""
+                  width="24"
+                  height="24"
+                />
+                <span class="site-nav__label">Palvelut</span>
+              </a>
+            </li>
+            <li class="site-nav__item site-nav__item--profile">
+              <a class="site-nav__link" role="link" aria-disabled="true">
+                <img
+                  class="site-nav__icon"
+                  src="img/icons/account.svg"
+                  alt=""
+                  width="24"
+                  height="24"
+                />
+                <span class="site-nav__label">Profiili</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main" class="page">
+      <div class="container">
+        <div class="page-header">
+          <h1>Hei, Elina! 👋</h1>
+          <p class="lead">Tervetuloa Haaga-Helian CampusConnect-palveluun.</p>
+        </div>
+
+        <section class="section" aria-labelledby="usein-kaytetyt">
+          <h2 class="section__title" id="usein-kaytetyt">
+            Usein käytetyt palvelut
+          </h2>
+          <div
+            class="tiles-scroll"
+            tabindex="0"
+            role="region"
+            aria-labelledby="usein-kaytetyt"
+          >
+            <ul class="tiles" aria-hidden="true">
+              <li>
+                <span class="placeholder">
+                  <span class="placeholder__icon">
+                    <img src="img/placeholder/part-1.svg" alt="" />
+                    <img src="img/placeholder/part-2.svg" alt="" />
+                    <img src="img/placeholder/part-3.svg" alt="" />
+                  </span>
+                </span>
+              </li>
+              <li>
+                <span class="placeholder">
+                  <span class="placeholder__icon">
+                    <img src="img/placeholder/part-1.svg" alt="" />
+                    <img src="img/placeholder/part-2.svg" alt="" />
+                    <img src="img/placeholder/part-3.svg" alt="" />
+                  </span>
+                </span>
+              </li>
+              <li>
+                <span class="placeholder">
+                  <span class="placeholder__icon">
+                    <img src="img/placeholder/part-1.svg" alt="" />
+                    <img src="img/placeholder/part-2.svg" alt="" />
+                    <img src="img/placeholder/part-3.svg" alt="" />
+                  </span>
+                </span>
+              </li>
+              <li>
+                <span class="placeholder">
+                  <span class="placeholder__icon">
+                    <img src="img/placeholder/part-1.svg" alt="" />
+                    <img src="img/placeholder/part-2.svg" alt="" />
+                    <img src="img/placeholder/part-3.svg" alt="" />
+                  </span>
+                </span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section" aria-labelledby="uutiset">
+          <h2 class="section__title" id="uutiset">Uutiset</h2>
+          <ul class="card news">
+            <li class="news__item">
+              <h3 class="news__title">CampusConnect on julki!</h3>
+              <p class="news__text">
+                Uusi palvelu kokoaa kampuksen palvelut, uutiset ja tapahtumat
+                yhteen paikkaan puhelimeesi.
+              </p>
+              <p class="news__more">
+                <span class="text-link">Lue lisää →</span>
+              </p>
+            </li>
+            <li class="news__item">
+              <h3 class="news__title">Löydä kurssikaverit Käyntikorteista</h3>
+              <p class="news__text">
+                Näe, ketkä opiskelevat kanssasi samoilla kursseilla ja keneltä
+                voit kysyä neuvoa tehtäviin.
+              </p>
+              <p class="news__more">
+                <span class="text-link">Lue lisää →</span>
+              </p>
+            </li>
+            <li class="news__item">
+              <h3 class="news__title">Kirjasto auki myös lauantaisin</h3>
+              <p class="news__text">
+                Syyslukukaudella kampuksen kirjasto ja hiljaiset lukutilat ovat
+                avoinna myös lauantaisin.
+              </p>
+              <p class="news__more">
+                <span class="text-link">Lue lisää →</span>
+              </p>
+            </li>
+          </ul>
+        </section>
+
+        <section class="section" aria-labelledby="tapahtumat">
+          <h2 class="section__title" id="tapahtumat">Tapahtumat</h2>
+          <div class="list-wrap">
+            <ul class="card-grid">
+              <li>
+                <article class="card event">
+                  <div
+                    class="placeholder placeholder--large event__media"
+                    aria-hidden="true"
+                  >
+                    <span class="placeholder__icon">
+                      <img src="img/placeholder/part-1.svg" alt="" />
+                      <img src="img/placeholder/part-2.svg" alt="" />
+                      <img src="img/placeholder/part-3.svg" alt="" />
+                    </span>
+                  </div>
+                  <div class="event__body">
+                    <h3>Fuksiaiset</h3>
+                    <p class="event__text">
+                      Uusien opiskelijoiden tervetuliaisilta: rastikierros
+                      kampuksen ympäristössä ja yhteinen iltajuhla.
+                    </p>
+                    <ul class="event__meta">
+                      <li>
+                        <span class="event__icon"
+                          ><img src="img/icons/clock.svg" alt=""
+                        /></span>
+                        <span
+                          ><span class="visually-hidden">Aika: </span
+                          ><time datetime="2026-09-21T17:00"
+                            >Maanantai 21.9.2026 klo 17.00</time
+                          ></span
+                        >
+                      </li>
+                      <li>
+                        <span class="event__icon"
+                          ><img src="img/icons/location.svg" alt=""
+                        /></span>
+                        <span
+                          ><span class="visually-hidden">Paikka: </span>Lähtö
+                          Haaga-Helian pääkampukselta (Ratapihantie 13)</span
+                        >
+                      </li>
+                    </ul>
+                    <p class="event__more">
+                      <span class="text-link">Lue lisää →</span>
+                    </p>
+                  </div>
+                </article>
+              </li>
+              <li>
+                <article class="card event">
+                  <div
+                    class="placeholder placeholder--large event__media"
+                    aria-hidden="true"
+                  >
+                    <span class="placeholder__icon">
+                      <img src="img/placeholder/part-1.svg" alt="" />
+                      <img src="img/placeholder/part-2.svg" alt="" />
+                      <img src="img/placeholder/part-3.svg" alt="" />
+                    </span>
+                  </div>
+                  <div class="event__body">
+                    <h3>Patsaskävely</h3>
+                    <p class="event__text">
+                      Opastettu kävelykierros Helsingin keskustan tunnetuimmille
+                      patsaille. Kierros kestää noin kaksi tuntia.
+                    </p>
+                    <ul class="event__meta">
+                      <li>
+                        <span class="event__icon"
+                          ><img src="img/icons/clock.svg" alt=""
+                        /></span>
+                        <span
+                          ><span class="visually-hidden">Aika: </span
+                          ><time datetime="2026-09-21T17:00"
+                            >Maanantai 21.9.2026 klo 17.00</time
+                          ></span
+                        >
+                      </li>
+                      <li>
+                        <span class="event__icon"
+                          ><img src="img/icons/location.svg" alt=""
+                        /></span>
+                        <span
+                          ><span class="visually-hidden">Paikka: </span>Lähtö
+                          Haaga-Helian pääkampukselta (Ratapihantie 13)</span
+                        >
+                      </li>
+                    </ul>
+                    <p class="event__more">
+                      <span class="text-link">Lue lisää →</span>
+                    </p>
+                  </div>
+                </article>
+              </li>
+              <li>
+                <article class="card event">
+                  <div
+                    class="placeholder placeholder--large event__media"
+                    aria-hidden="true"
+                  >
+                    <span class="placeholder__icon">
+                      <img src="img/placeholder/part-1.svg" alt="" />
+                      <img src="img/placeholder/part-2.svg" alt="" />
+                      <img src="img/placeholder/part-3.svg" alt="" />
+                    </span>
+                  </div>
+                  <div class="event__body">
+                    <h3>Urapäivät</h3>
+                    <p class="event__text">
+                      Tapaa työnantajia, kuule alumnien kokemuksia ja etsi
+                      itsellesi harjoittelupaikkaa tai opinnäytetyön aihetta.
+                    </p>
+                    <ul class="event__meta">
+                      <li>
+                        <span class="event__icon"
+                          ><img src="img/icons/clock.svg" alt=""
+                        /></span>
+                        <span
+                          ><span class="visually-hidden">Aika: </span
+                          ><time datetime="2026-09-21T17:00"
+                            >Maanantai 21.9.2026 klo 17.00</time
+                          ></span
+                        >
+                      </li>
+                      <li>
+                        <span class="event__icon"
+                          ><img src="img/icons/location.svg" alt=""
+                        /></span>
+                        <span
+                          ><span class="visually-hidden">Paikka: </span>Lähtö
+                          Haaga-Helian pääkampukselta (Ratapihantie 13)</span
+                        >
+                      </li>
+                    </ul>
+                    <p class="event__more">
+                      <span class="text-link">Lue lisää →</span>
+                    </p>
+                  </div>
+                </article>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>
