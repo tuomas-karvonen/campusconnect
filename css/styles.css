@@ -79,6 +79,8 @@
   --text-body-sm-lh: 1.3125rem; /* 21px */
   --text-lead-size: 1.125rem; /* 18px – text under the page title */
   --text-lead-lh: 1.6875rem; /* 27px */
+  --text-article-size: 1.125rem; /* 18px – news article body (long-form reading) */
+  --text-article-lh: 1.75rem; /* 28px */
   --text-news-title-size: 1rem; /* 16px semibold – news item title */
   --text-news-title-lh: 1.3125rem; /* 21px */
   --text-label-size: 0.875rem; /* 14px medium – tab bar labels (13px in Figma) */
@@ -645,7 +647,12 @@ a.row:hover .row__title {
 @media (min-width: 672px) {
   .card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-auto-rows: 1fr; /* every row as tall as the tallest card */
+  }
+
+  /* Event cards: every row as tall as the tallest card. Person cards keep
+     per-row heights, so a card alone in the last row isn't stretched. */
+  .card-grid--equal-rows {
+    grid-auto-rows: 1fr;
   }
 }
 
@@ -828,6 +835,38 @@ button.person-card:hover .person-card__name {
   background-color: var(--color-overlay);
   -webkit-backdrop-filter: blur(var(--blur-overlay));
   backdrop-filter: blur(var(--blur-overlay));
+}
+
+/* Gentle entrance: the modal fades in while growing slightly, the backdrop
+   fades in with it. No animation if the user prefers reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+  .modal[open] {
+    animation: modal-in 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  }
+
+  .modal[open]::backdrop {
+    animation: backdrop-in 320ms ease-out;
+  }
+
+  /* Swapping one modal for another (business card → chat): no fade, so
+     the dimmed backdrop stays put. */
+  .modal[open].is-switching,
+  .modal[open].is-switching::backdrop {
+    animation: none;
+  }
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+@keyframes backdrop-in {
+  from {
+    opacity: 0;
+  }
 }
 
 /* Back arrow | title | close X */
@@ -1129,8 +1168,21 @@ button.person-card:hover .person-card__name {
   margin-top: var(--space-5);
 }
 
-.onboarding__step .textarea + .modal__actions {
-  margin-top: var(--space-6);
+/* "0/200 merkkiä" under the text box, right-aligned. */
+.textarea-counter {
+  margin-top: var(--space-2);
+  color: var(--color-text-muted);
+  font-size: var(--text-body-sm-size);
+  line-height: var(--text-body-sm-lh);
+  text-align: right;
+}
+
+.textarea-counter.is-full {
+  color: var(--color-text);
+}
+
+.onboarding__step .textarea-counter + .modal__actions {
+  margin-top: var(--space-4);
 }
 
 /* ==========================================================================
@@ -1155,6 +1207,14 @@ button.person-card:hover .person-card__name {
 /* Section title followed by a short text instead of cards: 16px gap. */
 .section__title--tight {
   margin-bottom: var(--space-4);
+}
+
+/* "Järjestetty …" line between a section title and its list. */
+.list-note {
+  margin-bottom: var(--space-5);
+  color: var(--color-text-muted);
+  font-size: var(--text-body-sm-size);
+  line-height: var(--text-body-sm-lh);
 }
 
 .empty-state {
@@ -1260,4 +1320,91 @@ button.person-card:hover .person-card__name {
 .chat__send img {
   width: var(--size-icon-sm);
   height: var(--size-icon-sm);
+}
+
+/* ==========================================================================
+   11. News article (uutinen_kayntikortit.html)
+   Site headings, larger body text for long-form reading, full container
+   width.
+   ========================================================================== */
+
+/* 160px below the article: twice the 80px top space (plus the tab bar on
+   phones). */
+.page--article {
+  padding-bottom: calc(
+    var(--size-tab) + env(safe-area-inset-bottom, 0px) + 2 * var(--space-9)
+  );
+}
+
+@media (min-width: 768px) {
+  .page--article {
+    padding-bottom: calc(2 * var(--space-9));
+  }
+}
+
+.article {
+  margin-top: var(--space-4); /* below the "‹ Etusivu" back link */
+  font-size: var(--text-article-size);
+  line-height: var(--text-article-lh);
+}
+
+/* 16px between paragraphs, lists, quotes and the text after headings. */
+.article > * + * {
+  margin-top: var(--space-4);
+}
+
+.article > h2 {
+  margin-top: var(--space-7);
+}
+
+/* Subheading: 20px serif, larger than the 18px body text. */
+.article > h3 {
+  margin-top: var(--space-6);
+  font-size: var(--text-heading-size);
+  line-height: var(--text-heading-lh);
+}
+
+.article strong {
+  font-weight: var(--weight-semibold);
+}
+
+.article ul {
+  padding-left: 1.25em;
+}
+
+.article li + li {
+  margin-top: var(--space-1);
+}
+
+.article blockquote {
+  margin: var(--space-5) 0;
+  padding-left: var(--space-4);
+  border-left: 4px solid var(--color-accent);
+}
+
+/* Text after a quote: 24px. Headings keep their own (larger) spacing. */
+.article blockquote + p,
+.article blockquote + ul {
+  margin-top: var(--space-5);
+}
+
+.article__figure {
+  margin: var(--space-6) 0;
+}
+
+.article__figure + * {
+  margin-top: var(--space-6);
+}
+
+.article__figure img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+}
+
+.article__figure figcaption {
+  margin-top: var(--space-2);
+  color: var(--color-text-muted);
+  font-size: var(--text-body-sm-size);
+  line-height: var(--text-body-sm-lh);
 }

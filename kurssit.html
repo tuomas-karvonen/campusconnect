@@ -403,9 +403,14 @@
           <textarea
             class="textarea"
             name="kuvaus"
+            maxlength="200"
             aria-labelledby="step3-title"
-            aria-describedby="step3-text"
+            aria-describedby="step3-text kuvaus-counter"
           ></textarea>
+          <p class="visually-hidden textarea-counter__alert" aria-live="polite"></p>
+          <p class="textarea-counter" id="kuvaus-counter">
+            <span class="textarea-counter__count">0</span>/200 merkkiä
+          </p>
           <div class="modal__actions">
             <button class="button button--primary button--block" type="submit">
               Tallenna tiedot

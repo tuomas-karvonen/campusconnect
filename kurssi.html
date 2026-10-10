@@ -28,6 +28,7 @@
       crossorigin
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <script src="js/kayntikortit.js" defer></script>
     <script src="js/main.js" defer></script>
   </head>
   <body>
@@ -139,98 +140,17 @@
         </div>
 
         <section class="section" aria-labelledby="avoinna">
-          <h2 class="section__title" id="avoinna">
+          <h2 class="section__title section__title--tight" id="avoinna">
             Avoinna kysymyksille (5/57)
           </h2>
+          <p class="list-note">
+            Järjestetty yhteisten kurssien ja vuosikurssin mukaan
+          </p>
           <div class="list-wrap">
-            <ul class="card-grid">
-              <li>
-                <button
-                  class="card person-card"
-                  type="button"
-                  data-modal-open="kayntikortti"
-                >
-                  <span class="person-card__head">
-                    <span class="avatar"></span>
-                    <span>
-                      <span class="person-card__name">Risto Järvenpää</span>
-                      <span class="person-card__status"
-                        >Avoin kysymyksille</span
-                      >
-                    </span>
-                  </span>
-                  <span class="person-card__note"
-                    >Olette molemmat myös Johdanto ohjelmistokehitykseen
-                    -kurssilla (+ 3 muuta kurssia).</span
-                  >
-                </button>
-              </li>
-              <li>
-                <div class="card person-card">
-                  <span class="person-card__head">
-                    <span class="avatar"></span>
-                    <span>
-                      <span class="person-card__name">Topias Frost</span>
-                      <span class="person-card__status"
-                        >Avoin kysymyksille</span
-                      >
-                    </span>
-                  </span>
-                  <span class="person-card__note"
-                    >Olette molemmat myös Digistartti-kurssilla sekä Tekoälyn
-                    perusteet -kurssilla.</span
-                  >
-                </div>
-              </li>
-              <li>
-                <div class="card person-card">
-                  <span class="person-card__head">
-                    <span class="avatar"></span>
-                    <span>
-                      <span class="person-card__name">Saara Järvenpää</span>
-                      <span class="person-card__status"
-                        >Avoin kysymyksille</span
-                      >
-                    </span>
-                  </span>
-                  <span class="person-card__note"
-                    >Olette molemmat myös Digistartti-kurssilla.</span
-                  >
-                </div>
-              </li>
-              <li>
-                <div class="card person-card">
-                  <span class="person-card__head">
-                    <span class="avatar"></span>
-                    <span>
-                      <span class="person-card__name">Marja Huurre</span>
-                      <span class="person-card__status"
-                        >Avoin kysymyksille</span
-                      >
-                    </span>
-                  </span>
-                  <span class="person-card__note"
-                    >Olette molemmat myös Johdanto opiskeluun -kurssilla.</span
-                  >
-                </div>
-              </li>
-              <li>
-                <div class="card person-card">
-                  <span class="person-card__head">
-                    <span class="avatar"></span>
-                    <span>
-                      <span class="person-card__name">Oona Kiviniemi</span>
-                      <span class="person-card__status"
-                        >Avoin kysymyksille</span
-                      >
-                    </span>
-                  </span>
-                  <span class="person-card__note"
-                    >Olette molemmat myös Tekoälyn perusteet -kurssilla.</span
-                  >
-                </div>
-              </li>
-            </ul>
+            <ul
+              class="card-grid"
+              data-people-for="Johdanto digitaalisiin palveluihin"
+            ></ul>
           </div>
         </section>
       </div>
@@ -258,6 +178,8 @@
           <span class="avatar"></span>
           <div>
             <h2 class="profile__name">Risto Järvenpää</h2>
+            <!-- Filled in by js/kayntikortit.js -->
+            <p class="person-card__status" data-card-year></p>
             <p class="person-card__status">Avoin kysymyksille</p>
           </div>
         </div>
@@ -269,14 +191,10 @@
         <p class="profile__block profile__text">
           Opiskelee yleensä arkipäivinä.
         </p>
-        <div class="profile__block profile__courses">
-          <p>Olette molemmat seuraavilla kursseilla:</p>
-          <ul>
-            <li>Digistartti</li>
-            <li>Johdanto opiskeluun</li>
-            <li>Johdanto digitaalisiin palveluihin</li>
-            <li>Johdanto ohjelmistokehitykseen</li>
-          </ul>
+        <!-- Course list filled in by js/kayntikortit.js; hidden if empty -->
+        <div class="profile__block profile__courses" data-card-courses>
+          <p>Yhteiset kurssit:</p>
+          <ul></ul>
         </div>
         <button
           class="button button--primary button--block"

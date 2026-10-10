@@ -20,6 +20,10 @@
   const progress = dialog.querySelector(".onboarding__progress");
   const questionCount = form.querySelectorAll("[data-question]").length;
   const lastStep = steps.length - 1;
+  const description = form.querySelector('textarea[name="kuvaus"]');
+  const counter = form.querySelector(".textarea-counter");
+  const counterNumber = form.querySelector(".textarea-counter__count");
+  const counterAlert = form.querySelector(".textarea-counter__alert");
   let current = 0;
 
   function focusHeading() {
@@ -50,6 +54,18 @@
     });
   }
 
+  // "0/200 merkkiä" under the description. maxlength stops typing at the
+  // limit; screen readers hear once that the limit has been reached.
+  function updateCounter() {
+    const length = description.value.length;
+    const full = length >= description.maxLength;
+    counterNumber.textContent = String(length);
+    counter.classList.toggle("is-full", full);
+    counterAlert.textContent = full
+      ? `Enimmäispituus ${description.maxLength} merkkiä on täynnä.`
+      : "";
+  }
+
   function markSeen() {
     try {
       sessionStorage.setItem(SEEN_KEY, "1");
@@ -67,6 +83,7 @@
   }
 
   form.addEventListener("change", updateNextButtons);
+  description.addEventListener("input", updateCounter);
 
   form.querySelectorAll("[data-next]").forEach((button) => {
     button.addEventListener("click", () => {
@@ -99,13 +116,22 @@
     markSeen();
     form.reset();
     updateNextButtons();
+    updateCounter();
     showStep(0);
   });
 
+  // Match the counter and buttons to any form values the browser restored.
+  updateCounter();
+  updateNextButtons();
   showStep(0);
 
+  // Open after a short pause, so the course list shows first and the modal
+  // then animates in on top of it.
+  const OPEN_DELAY = 400;
   if (!hasBeenSeen()) {
-    openModal(dialog);
-    focusHeading();
+    setTimeout(() => {
+      openModal(dialog);
+      focusHeading();
+    }, OPEN_DELAY);
   }
 }

@@ -26,6 +26,7 @@ function hideOpenDialogs() {
 function openModal(dialog) {
   if (dialog.open) return;
   dialog.closedByScript = false;
+  dialog.classList.remove("is-switching");
   dialog.showModal();
   history.pushState({ modal: dialog.id }, "");
 }
@@ -44,6 +45,8 @@ function closeModal(dialog) {
 function switchModal(fromDialog, toDialog) {
   hideDialog(fromDialog);
   toDialog.closedByScript = false;
+  // No entrance animation: the overlay should look continuous, not flicker.
+  toDialog.classList.add("is-switching");
   toDialog.showModal();
   history.replaceState({ modal: toDialog.id }, "");
 }
